@@ -18,9 +18,10 @@ import shutil
 path_execucao_script = os.path.dirname(os.path.realpath(__file__)) + "/"
 
 ## SETTINGS MANAGER ##
+path_git_root = "/Users/francisco/Downloads/anuncios-controle/"
 
 #absoluto no sistema (precisa / no final)
-path_anuncios = "/Users/francisco/Downloads/anuncios-controle/usados/Sil" + "/"
+path_anuncios = "/Users/francisco/Downloads/anuncios-controle/usados" + "/"
 
 #modelo do anuncio atual
 modelo_anuncio = "lojasdomago-instagram"
@@ -102,14 +103,23 @@ def scanDir(path_scaneado):
         print("------- pasta finalizada, próxima --------")
     print("------ Script executado com sucesso, arquivos gerados ------")
     copyFolderToDropbox()
+    copyFolderAnunciosProntos()
 
 def copyFolderToDropbox():
-    path_dropbox_anuncios_prontos = path_dropbox + "anucios-prontos/" + modelo_anuncio
+    path_dropbox_anuncios_prontos = path_dropbox + "anuncios-prontos/" + modelo_anuncio
     #
     if os.path.isdir(path_dropbox_anuncios_prontos):
         shutil.rmtree(path_dropbox_anuncios_prontos)
     #
     copy_tree(path_execucao_script_anuncios_prontos, path_dropbox_anuncios_prontos)
+
+def copyFolderAnunciosProntos():
+    path_git_root_anuncios_prontos = path_git_root + "anuncios-prontos/" + modelo_anuncio
+    #
+    if os.path.isdir(path_git_root_anuncios_prontos):
+        shutil.rmtree(path_git_root_anuncios_prontos)
+    #
+    copy_tree(path_execucao_script_anuncios_prontos, path_git_root_anuncios_prontos)
 
 scanDir(path_anuncios)
 
