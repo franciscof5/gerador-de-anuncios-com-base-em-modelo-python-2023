@@ -20,7 +20,7 @@ path_execucao_script = os.path.dirname(os.path.realpath(__file__)) + "/"
 ## SETTINGS MANAGER ##
 
 #absoluto no sistema (precisa / no final)
-path_anuncios = "/Users/francisco/Downloads/anuncios-controle/usados/"
+path_anuncios = "/Users/francisco/Downloads/anuncios-controle/usados/Sil" + "/"
 
 #modelo do anuncio atual
 modelo_anuncio = "lojasdomago-instagram"
@@ -63,6 +63,7 @@ def geraThumbSVG(novo_preco, novo_titulo, path_scaneado, file_relative_path, fil
     #
     salvar_imagem_na_pasta_de_anuncio = path_scaneado + file_relative_path + "/_anuncio-" + novo_preco + "-" + novo_titulo + ".jpg"
     salvar_imagem_na_pasta_do_script = path_execucao_script + "anuncios-prontos/" + modelo_anuncio + "/" + novo_titulo + ".jpg"
+    print(" \n salvar_imagem_na_pasta_de_anuncio")
     #
     drawing = svg2rlg(svg_gerado)
     #
