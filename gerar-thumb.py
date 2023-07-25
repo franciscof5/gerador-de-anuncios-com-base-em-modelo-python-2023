@@ -18,13 +18,13 @@ import shutil
 path_execucao_script = os.path.dirname(os.path.realpath(__file__)) + "/"
 
 ## SETTINGS MANAGER ##
-path_git_root = "/Users/francisco/Downloads/anuncios-controle/"
+path_git_root = "/var/www/applications/anuncios-controle/"
 
 #absoluto no sistema (precisa / no final)
-path_anuncios = "/Users/francisco/Downloads/anuncios-controle/usados" + "/"
+path_anuncios = path_git_root + "usados" + "/"
 
 #modelo do anuncio atual
-modelo_anuncio = "lojasdomago-instagram"
+modelo_anuncio = "lojasdomago-sempreco"
 modelo_os = "-macos"
 path_execucao_script_modelo_anuncio = path_execucao_script+'modelos-de-anuncios/' + modelo_anuncio + '/'
 path_execucao_script_anuncios_prontos = path_execucao_script + "anuncios-prontos/" + modelo_anuncio + "/"
@@ -62,7 +62,7 @@ def geraThumbSVG(novo_preco, novo_titulo, path_scaneado, file_relative_path, fil
         file.write(data)
 
     #
-    salvar_imagem_na_pasta_de_anuncio = path_scaneado + file_relative_path + "/_anuncio-" + novo_preco + "-" + novo_titulo + ".jpg"
+    salvar_imagem_na_pasta_de_anuncio = path_scaneado + file_relative_path + "/00-anuncio-" + novo_preco + "-" + novo_titulo + ".jpg"
     salvar_imagem_na_pasta_do_script = path_execucao_script + "anuncios-prontos/" + modelo_anuncio + "/" + novo_titulo + ".jpg"
     print(" \n salvar_imagem_na_pasta_de_anuncio")
     #
@@ -85,7 +85,7 @@ def scanDir(path_scaneado):
             print("Array de arquivos indexas no diretório: ")
             print(sorted(filenames, reverse=True))
             for filename in sorted(filenames, reverse=True):
-                if(  filename[0:9] == "_anuncio-" ):
+                if(  filename[0:11] == "00-anuncio-" ):
                     print("Encontrado thumbnail renderizada (já com preço), buscando próxima imagem para geraThumbSVG()")
                     #os.remove(path_scaneado+dirpath+"/"+filename)
                 else:
